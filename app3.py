@@ -41,8 +41,10 @@ def classify_image(file_path):
         return 'grade B class', 'Grade B product'
     elif any(condition in file_path for condition in grade_c_conditions):
         return 'grade C class', 'Grade C product'
+    # else:
+    #     return 'good', 'There is no effect in the product'
     else:
-        return 'good', 'There is no effect in the product'
+         return 'Invalid Image', 'Upload an different image'
 
 @app.route('/uploads', methods=['GET', 'POST'])
 def upload_image():

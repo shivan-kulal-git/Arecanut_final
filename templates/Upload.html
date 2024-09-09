@@ -76,7 +76,7 @@
                 <nav class="menuzord" id="main_menu">
                     <ul class="menuzord-menu">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/uploads">Upload</a></li>
+                        <li class="active"><a href="/uploads">Upload</a></li>
                         <li><a href="/contact">contact</a></li>
                         <li><a href="/about">About Us</a></li>
 
@@ -261,7 +261,7 @@
 
 </section>
 <h1 style="text-align: center; margin-top: 20px;">Upload an Image for Classification</h1>
-    <center style="margin-left: 500px;">
+    <!-- <center style="margin-left: 500px;">
         <div>
             
             <form method="post" enctype="multipart/form-data" style="text-align: center; margin-top: 20px;">
@@ -270,10 +270,83 @@
                 <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Upload</button>
             </form>
         </div>
-    </center>
+    </center> -->
     
 
-<section class="why-chooseus style-2 sec-padd-top" style="background-image: url(../static/images/background/9.jpg);">
+ <!-- new -->   
+ <form method="post" enctype="multipart/form-data" style="text-align: center; margin-top: 20px;">
+    <div class="file-upload" style="background-color: #ffffff; width: 600px; margin: 0 auto; padding: 20px;">
+        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger('click')" 
+                style="width: 100%; margin: 0; color: #fff; background: #1FB264; border: none; padding: 10px; border-radius: 4px; 
+                border-bottom: 4px solid #15824B; transition: all .2s ease; outline: none; text-transform: uppercase; font-weight: 700; cursor: pointer;">
+            Add Image
+        </button>
+
+        <div class="image-upload-wrap" style="margin-top: 20px; border: 4px dashed #1FB264; position: relative;">
+            <input class="file-upload-input" type="file" name="file" onchange="readURL(this);" accept="image/*" 
+                   style="position: absolute; margin: 0; padding: 0; width: 100%; height: 100%; outline: none; opacity: 0; cursor: pointer;" />
+            <div class="drag-text" style="text-align: center;">
+                <h3 style="font-weight: 100; text-transform: uppercase; color: #15824B; padding: 60px 0;">Drag and drop a file or select Add Image</h3>
+            </div>
+        </div>
+
+        <div class="file-upload-content" style="display: none; text-align: center;">
+            <img class="file-upload-image" src="#" alt="your image" style="max-height: 200px; max-width: 200px; margin: auto; padding: 20px;" />
+            <div class="image-title-wrap" style="padding: 0 15px 15px 15px; color: #222;">
+                <!-- Flex container for buttons -->
+                <div style="display: flex; justify-content: center; gap: 10px;">
+                    <button type="button" onclick="removeUpload()" 
+                            class="remove-image" 
+                            style="width: 200px; color: #fff; background: #cd4535; border: none; padding: 10px; border-radius: 4px; border-bottom: 4px solid #b02818; 
+                            transition: all .2s ease; outline: none; text-transform: uppercase; font-weight: 700; cursor: pointer;">
+                        Remove 
+                    </button>
+                    <button type="submit" 
+                            style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+                        Upload
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.image-upload-wrap').hide();
+                $('.file-upload-image').attr('src', e.target.result);
+                $('.file-upload-content').show();
+                $('.image-title').html(input.files[0].name);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            removeUpload();
+        }
+    }
+
+    function removeUpload() {
+        $('.file-upload-input').val(''); // Reset the input value
+        $('.file-upload-content').hide(); // Hide the preview
+        $('.image-upload-wrap').show();  // Show the upload area
+    }
+
+    $('.image-upload-wrap').bind('dragover', function () {
+        $('.image-upload-wrap').addClass('image-dropping');
+    });
+
+    $('.image-upload-wrap').bind('dragleave', function () {
+        $('.image-upload-wrap').removeClass('image-dropping');
+    });
+</script>
+ <!-- new end-->
+
+
+<!-- <section class="why-chooseus style-2 sec-padd-top" style="background-image: url(../static/images/background/9.jpg);">
     <div class="container">
             
         <div class="col-md-8 col-md-offset-4 col-sm-12">
@@ -283,9 +356,9 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="item">
-                        <div class="inner-box">
+                        <div class="inner-box"> -->
                             <!--icon-box-->
-                            <div class="icon_box">
+                            <!-- <div class="icon_box">
                                 <span class="icon-star"></span>
                             </div>
                             <a href="#"><h4>Most Trusted One</h4></a>
@@ -295,9 +368,9 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="item">
-                        <div class="inner-box">
+                        <div class="inner-box"> -->
                             <!--icon-box-->
-                            <div class="icon_box">
+                            <!-- <div class="icon_box">
                                 <span class="icon-people-1"></span>
                             </div>
                             <a href="#"><h4>Goodwill Volunteers</h4></a>
@@ -307,9 +380,9 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="item">
-                        <div class="inner-box">
+                        <div class="inner-box"> -->
                             <!--icon-box-->
-                            <div class="icon_box">
+                            <!-- <div class="icon_box">
                                 <span class="icon-medal"></span>
                             </div>
                             <a href="3.html"><h4>Certified Campaign</h4></a>
@@ -319,9 +392,9 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="item">
-                        <div class="inner-box">
+                        <div class="inner-box"> -->
                             <!--icon-box-->
-                            <div class="icon_box">
+                            <!-- <div class="icon_box">
                                 <span class="icon-shapes"></span>
                             </div>
                             <a href="#"><h4>20 Years Experince</h4></a>
@@ -341,13 +414,13 @@
 
         <div class="section-title center">
             <h1>What People Say About Us</h1>
-        </div>
+        </div> -->
     
         <!--Slider-->      
-        <div class="testimonials-slider2">
+        <!-- <div class="testimonials-slider2"> -->
             
             <!--Slide-->
-            <article class="slide-item center">
+            <!-- <article class="slide-item center">
  
                 <div class="slide-text">
                     <span class="icon-null"></span>
@@ -364,9 +437,9 @@
                     <h4>Astley Jenifer</h4>
                     <p>California</p>
                 </div>
-            </article>
+            </article> -->
             <!--Slide-->
-            <article class="slide-item center">
+            <!-- <article class="slide-item center">
  
                 <div class="slide-text">
                     <span class="icon-null"></span>
@@ -383,9 +456,9 @@
                     <h4>Nathan Duckvat</h4>
                     <p>Nawyork</p>
                 </div>
-            </article>
+            </article> -->
             <!--Slide-->
-            <article class="slide-item center">
+            <!-- <article class="slide-item center">
  
                 <div class="slide-text">
                     <span class="icon-null"></span>
@@ -413,7 +486,7 @@
         </div>
         
     </div>    
-</section>
+</section> -->
 
 
 
@@ -546,9 +619,9 @@
                                 <ul class="social-icon">
                                     <li><a href="https://www.facebook.com/ShivanKumarKulal"  target="_blank"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="https://github.com/shivan-kulal-git"  target="_blank"><i class="fa fa-github"></i></a></li>
-                                    <li><a href="https://orcid.org/0009-0009-1214-3467"  target="_blank"><i class="fa fa-orcid"></i></a></li>
+                                    <!-- <li><a href="https://orcid.org/0009-0009-1214-3467"  target="_blank"><i class="fa fa-orcid"></i></a></li> -->
                                     <li><a href="https://www.linkedin.com/in/shivan-kulal/"  target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="https://shivankulal.free.nf/?i=1"  target="_blank"><i class="fa fa-link"></i></a></li>
+                                    <li><a href="https://youtube.com/shorts/8i5wWDd--n0?si=0KtpVEtgt-Z91pkZ"  target="_blank"><i class="fa fa-link"></i></a></li>
 
                                 </ul>
                             </div>
@@ -557,7 +630,7 @@
                         
                     </div>
                 </div>
-                
+                 
              </div>
          </div>
      </div>
